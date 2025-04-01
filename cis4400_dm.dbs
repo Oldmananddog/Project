@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="HW1" database="MySql" id="MySql-8f7" >
+	<schema name="hw1" >
+		<table name="dim_address" prior="dimaddress" >
+			<column name="eviction_zipcode" prior="evictionzipcode" type="INT" jt="4" />
+			<column name="borough" prior="dim_borough" type="CHAR" length="8" jt="1" />
+			<column name="evction_address_number" prior="exvction_address_number" type="INT" jt="4" />
+			<column name="eviction_address" type="VARCHAR" length="20" jt="12" mandatory="y" />
+			<index name="unq_dim_address_exvction_address_number" unique="UNIQUE_KEY" >
+				<column name="evction_address_number" />
+			</index>
+			<index name="unq_dim_address_eviction_address" unique="UNIQUE_KEY" >
+				<column name="eviction_address" />
+			</index>
+			<index name="pk_dim_address" unique="PRIMARY_KEY" >
+				<column name="eviction_address" />
+			</index>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+		<table name="dim_propertytype" prior="dim_p" >
+			<column name="residential" type="CHAR" length="15" jt="1" mandatory="y" />
+			<column name="commercial" type="CHAR" length="15" jt="1" />
+			<index name="pk_dim_propertytype" unique="PRIMARY_KEY" >
+				<column name="residential" />
+			</index>
+			<fk name="fk_dim_propertytype_eviction" to_schema="hw1" to_table="eviction" >
+				<fk_column name="commercial" pk="commercial" />
+			</fk>
+			<fk name="fk_dim_propertytype" to_schema="hw1" to_table="eviction" >
+				<fk_column name="residential" pk="residential" />
+			</fk>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+		<table name="dim_time" prior="tbl" >
+			<column name="executeddate" prior="dim_executeddate" type="DATE" jt="91" mandatory="y" />
+			<column name="year" prior="dim_year" type="INT" jt="4" />
+			<column name="day" type="INT" jt="4" />
+			<column name="mounth" prior="dim_mounth" type="INT" jt="4" />
+			<index name="unq_dim_time_executeddate" unique="UNIQUE_KEY" >
+				<column name="executeddate" />
+			</index>
+			<index name="pk_dim_time" unique="PRIMARY_KEY" >
+				<column name="executeddate" />
+			</index>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+		<table name="eviction" prior="evictionid" >
+			<column name="excuteddate" prior="timeid" type="INT" jt="4" />
+			<column name="courtindexnumber" type="INT" jt="4" />
+			<column name="dockenumber" type="INT" jt="4" />
+			<column name="eviction_address" type="VARCHAR" length="15" jt="12" />
+			<column name="eviction_address_number" prior="eviction_apartment" type="INT" jt="4" />
+			<column name="marshal_fn" type="VARCHAR" length="10" jt="12" />
+			<column name="marshal_ln" type="VARCHAR" length="9" jt="12" />
+			<column name="residential" type="CHAR" length="15" jt="1" />
+			<column name="commercial" type="CHAR" length="15" jt="1" />
+			<index name="unq_eviction_commercial" unique="UNIQUE_KEY" >
+				<column name="commercial" />
+			</index>
+			<index name="unq_eviction_residential" unique="UNIQUE_KEY" >
+				<column name="residential" />
+			</index>
+			<index name="unq_eviction_eviction_address_number" unique="UNIQUE_KEY" >
+				<column name="eviction_address_number" />
+			</index>
+			<fk name="fk_eviction_dim_time_0" to_schema="hw1" to_table="dim_time" >
+				<fk_column name="excuteddate" pk="executeddate" />
+			</fk>
+			<fk name="fk_eviction_dim_address" to_schema="hw1" to_table="dim_address" >
+				<fk_column name="eviction_address_number" pk="evction_address_number" />
+			</fk>
+			<fk name="fk_eviction_dim_address_0" to_schema="hw1" to_table="dim_address" >
+				<fk_column name="eviction_address" pk="eviction_address" />
+			</fk>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+	</schema>
+	<layout name="eviction" id="Diagram-2bf" show_relation="columns" >
+		<entity schema="hw1" name="dim_address" color="C1D8EE" x="528" y="320" />
+		<entity schema="hw1" name="dim_propertytype" color="C1D8EE" x="48" y="240" />
+		<entity schema="hw1" name="dim_time" color="C1D8EE" x="496" y="64" />
+		<entity schema="hw1" name="eviction" color="C1D8EE" x="224" y="48" />
+	</layout>
+</project>
