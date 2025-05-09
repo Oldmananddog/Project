@@ -1,5 +1,4 @@
-CIS4400
-Homework 1 
+## CIS4400 Homework 1 
 
 Evictions
 This dataset lists executed evictions within the five boroughs for the years 2017-Present (data prior to January 1, 2017, is not available). The data fields may be sorted by 20 categories of information including Court Index Number, Docket Number, Eviction Address, Marshal First or Last Name, Borough, etc..
@@ -31,12 +30,14 @@ a.	calculate the rates, trends and comparison
 a.	The database will store data related to eviction cases, zip codes, property types, and calculated metrics
 
 Diagram: 
-1.	Dataset (Evictions)  data ingestion  data transformation  data warehouse  analysis 
+![alt text](docs/diagram/IA.png)
+
+![alt text](docs/diagram/DA.png)
+
+![alt text](<docs/Dimensional Modeling.png>)
 
 
-Dimensional Modeling: Star Schema
-Fact:  excuteddate, courtindexnumber, dockenumber, Residential, Commercial, eviction_address, eviction_address_number, marshal_fn.marshal_ln,
-Dimaddress: eviction_address, eviction_address_number, eviction_zipcode, borough
-DimTIme: Year, Month,day, executeddate
-DImpropertytype: Residential, Commercial
 
+
+## homework2 
+	
