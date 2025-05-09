@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="HW1" database="MySql" id="MySql-8f7" >
+	<schema name="hw1" >
+		<table name="dim_date" prior="dim_time" >
+			<column name="date_id" prior="year" type="VARCHAR" length="99" jt="12" />
+			<column name="year" prior="day" type="DATE" jt="91" />
+			<column name="mounth" prior="dim_mounth" type="DATE" jt="91" />
+			<column name="quarter" type="DATE" jt="91" />
+			<index name="unq_dim_date_date_id" unique="UNIQUE_KEY" >
+				<column name="date_id" />
+			</index>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+		<table name="dim_loction" prior="dim_address" >
+			<column name="location_id" type="VARCHAR" length="99" jt="12" />
+			<column name="borough" type="VARCHAR" length="99" jt="12" />
+			<column name="zip_code" type="INT" jt="4" />
+			<column name="neighborhood" type="CHAR" length="99" jt="1" />
+			<index name="unq_dim_loction_location_id" unique="UNIQUE_KEY" >
+				<column name="location_id" />
+			</index>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+		<table name="dim_marshal" prior="tbl" >
+			<column name="marshal_id" type="VARCHAR" length="99" jt="12" />
+			<column name="first_name" type="VARCHAR" length="100" jt="12" />
+			<column name="last_name" type="VARCHAR" length="100" jt="12" />
+			<column name="borough" type="VARCHAR" length="99" jt="12" />
+			<index name="unq_dim_marshal_marshal_id" unique="UNIQUE_KEY" >
+				<column name="marshal_id" />
+			</index>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+		<table name="dim_property_type" prior="dim_propertytype" >
+			<column name="property_type_id" type="VARCHAR" length="99" jt="12" />
+			<column name="type_name" type="CHAR" length="99" jt="1" >
+				<comment><![CDATA[Residential, Commercial]]></comment>
+			</column>
+			<index name="unq_dim_property_type_property_type_id" unique="UNIQUE_KEY" >
+				<column name="property_type_id" />
+			</index>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+		<table name="fact_eviction" prior="eviction" >
+			<column name="eviction_id" type="VARCHAR" length="99" jt="12" mandatory="y" />
+			<column name="date_id" type="VARCHAR" length="99" jt="12" />
+			<column name="location_id" type="VARCHAR" length="99" jt="12" />
+			<column name="count_evictions" type="VARCHAR" length="99" jt="12" />
+			<column name="property_type_id" prior="property_tyoe_id" type="VARCHAR" length="99" jt="12" />
+			<index name="pk_fact_eviction" unique="PRIMARY_KEY" >
+				<column name="eviction_id" />
+			</index>
+			<fk name="fk_fact_eviction_dim_date" to_schema="hw1" to_table="dim_date" >
+				<fk_column name="date_id" pk="date_id" />
+			</fk>
+			<fk name="fk_fact_eviction_dim_loction" to_schema="hw1" to_table="dim_loction" >
+				<fk_column name="location_id" pk="location_id" />
+			</fk>
+			<fk name="fk_fact_eviction_dim_property_type" to_schema="hw1" to_table="dim_property_type" >
+				<fk_column name="property_type_id" pk="property_type_id" />
+			</fk>
+			<fk name="fk_fact_eviction_dim_marshal" to_schema="hw1" to_table="dim_marshal" >
+				<fk_column name="eviction_id" pk="marshal_id" />
+			</fk>
+			<options><![CDATA[engine=InnoDB]]></options>
+		</table>
+	</schema>
+	<layout name="eviction" id="Diagram-2bf" show_relation="columns" >
+		<entity schema="hw1" name="dim_loction" color="C1D8EE" x="95" y="247" />
+		<entity schema="hw1" name="dim_property_type" color="C1D8EE" x="57" y="57" />
+		<entity schema="hw1" name="dim_date" color="C1D8EE" x="494" y="57" />
+		<entity schema="hw1" name="dim_marshal" color="C1D8EE" x="494" y="247" />
+		<entity schema="hw1" name="fact_eviction" color="C1D8EE" x="285" y="114" />
+	</layout>
+</project>
