@@ -40,4 +40,6 @@ Diagram:
 
 
 ## homework2 
-	
+	data is download from Data source: https://data.cityofnewyork.us/City-Government/Evictions/6z8x-wfk4/about_data and stored at azure 
+
+	updated data dictionary in 
