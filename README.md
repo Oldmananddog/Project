@@ -42,4 +42,14 @@ Diagram:
 ## homework2 
 	data is download from Data source: https://data.cityofnewyork.us/City-Government/Evictions/6z8x-wfk4/about_data and stored at azure 
 
-	updated data dictionary in 
+	updated data dictionary in the og dictionary excel
+
+	created new branch for a dimensional data warehouse to analyze eviction activity across New York City using public eviction datasets. The warehouse is designed using a star schema with `fact_eviction` as the central fact table and supporting dimension tables.
+
+	Track eviction volume by borough, zipcode, and property type.
+
+	Analyze trends by month and quarter.
+
+	Evaluate marshal workload by borough.
+
+	
