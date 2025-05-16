@@ -51,7 +51,7 @@ Diagram:
 	use dbt created fact and dim table via snowflake in feature/etl 
 
 	Track eviction volume by zipcode:
-	docs/NYC's eviction map.png
+	![alt text](<docs/NYC's eviction map.png>)
 
 
 	Analyze trends by five boroughs  
