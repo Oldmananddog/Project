@@ -46,10 +46,17 @@ Diagram:
 
 	created new branch for a dimensional data warehouse to analyze eviction activity across New York City using public eviction datasets. The warehouse is designed using a star schema with `fact_eviction` as the central fact table and supporting dimension tables.
 
-	Track eviction volume by borough, zipcode, and property type.
+	docs/Dimensional Modeling.png
+	
+	use dbt created fact and dim table via snowflake in feature/etl 
 
-	Analyze trends by month and quarter.
+	Track eviction volume by zipcode:
+	docs/NYC's eviction map.png
 
-	Evaluate marshal workload by borough.
+
+	Analyze trends by five boroughs  
+	![alt text](<docs/boro eviction.png>)
+
+	
 
 	
