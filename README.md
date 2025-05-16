@@ -40,16 +40,36 @@ Diagram:
 
 
 ## homework2 
-	data is download from Data source: https://data.cityofnewyork.us/City-Government/Evictions/6z8x-wfk4/about_data and stored at azure 
+1. data is download from Data source: 
+https://data.cityofnewyork.us/City-Government/Evictions/6z8x-wfk4/about_data 
 
-	updated data dictionary in the og dictionary excel
+2. The data is securely stored on Azure  for the analysis.
 
-	created new branch for a dimensional data warehouse to analyze eviction activity across New York City using public eviction datasets. The warehouse is designed using a star schema with `fact_eviction` as the central fact table and supporting dimension tables.
+3. updated data dictionary in the dictionary excel
 
-	docs/Dimensional Modeling.png
+4. Created new branch for a dimensional data warehouse to analyze.
+
+ The warehouse is designed using a star schema with `fact_eviction` as the central fact table and supporting dimension tables.
+Fact Table: fact_eviction
+
+	Dimension Tables:
+
+	dim_date
+
+	dim_location
+
+	dim_property_type
+
+	dim_marshal
+
+docs/Dimensional Modeling.png
 	
-	use dbt created fact and dim table via snowflake in feature/etl 
+5. created ETL pipelines by using dbt and Snowflake for 
+ cleaning and transform the raw data, 
+ Populate dimension and fact tables, 
+ Standardize key fields 
 
+6. Using Tableau visulize geographic and trend-based analysis
 	Track eviction volume by zipcode:
 	![alt text](<docs/NYC's eviction map.png>)
 
