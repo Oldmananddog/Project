@@ -62,7 +62,7 @@ Fact Table: fact_eviction
 
 	dim_marshal
 
-docs/Dimensional Modeling.png
+[alt text](<docs/Dimensional Modeling.png>)
 	
 5. created ETL pipelines by using dbt and Snowflake for 
  cleaning and transform the raw data, 
